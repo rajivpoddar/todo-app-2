@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface TodoItemProps {
   task: string;
   completedTasks: string[];
-  setCompletedTasks: (completedTasks: string[]) => void;
+  setCompletedTasks: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ task, completedTasks, setCompletedTasks }) => {
@@ -11,7 +11,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ task, completedTasks, setCompletedT
   const [editValue, setEditValue] = useState(task);
 
   const handleCheck = () => {
-    setCompletedTasks(prev => [...prev, task]);
+    setCompletedTasks((prev: string[]) => [...prev, task]);
   };
 
   const handleEdit = () => {
